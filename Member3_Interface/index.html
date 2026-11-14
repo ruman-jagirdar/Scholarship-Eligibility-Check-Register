@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ScholarEase | Scholarship Eligibility Check</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header class="navbar">
+        <a href="index.html" class="logo">
+            <span class="logo-icon">🎓</span>
+            <span>Scholar<span class="logo-highlight">Ease</span></span>
+        </a>
+
+        <nav class="nav-links">
+            <a href="index.html" class="active">Home</a>
+            <a href="#eligibility">Eligibility Check</a>
+            <a href="register.html">Register</a>
+            <a href="login.html" class="login-link">Login</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-label">YOUR FUTURE, OUR PRIORITY</span>
+
+            <h1>
+                Find Your Scholarship
+                <span>Eligibility</span>
+            </h1>
+
+            <p>
+                Discover whether you meet the eligibility requirements
+                for scholarships. Enter your academic and family income
+                details to check your eligibility.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#eligibility" class="btn btn-primary">
+                    Check Eligibility →
+                </a>
+
+                <a href="register.html" class="btn btn-secondary">
+                    Create Account
+                </a>
+            </div>
+
+            <div class="hero-note">
+                <span>✓</span>
+                Simple, convenient scholarship eligibility checking
+            </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+            <div class="visual-circle"></div>
+
+            <div class="visual-card">
+                <div class="visual-cap">🎓</div>
+                <h3>Your Dreams Matter</h3>
+                <p>Take the first step toward your educational future.</p>
+
+                <div class="visual-divider"></div>
+
+                <div class="visual-stat">
+                    <span class="stat-icon">📚</span>
+                    <div>
+                        <strong>Check Eligibility</strong>
+                        <small>Know the basic requirements</small>
+                    </div>
+                </div>
+
+                <div class="visual-stat">
+                    <span class="stat-icon">✨</span>
+                    <div>
+                        <strong>Explore Opportunities</strong>
+                        <small>Prepare for scholarship applications</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="floating-badge">
+                <span>💜</span> Education opens doors
+            </div>
+        </div>
+    </section>
+
+    <!-- Eligibility Checker -->
+    <section class="eligibility-section" id="eligibility">
+        <div class="section-heading">
+            <span class="section-label">GET STARTED</span>
+            <h2>Scholarship Eligibility Check</h2>
+            <p>
+                Enter your details below to check the example
+                eligibility criteria for your scholarship.
+            </p>
+        </div>
+
+        <div class="eligibility-layout">
+
+            <div class="form-card">
+                <div class="card-title">
+                    <div class="card-icon">📝</div>
+                    <div>
+                        <h3>Check Your Eligibility</h3>
+                        <p>Fill in all the required information.</p>
+                    </div>
+                </div>
+
+                <form id="eligibilityForm">
+
+                    <div class="form-group">
+                        <label for="studentName">Student Name</label>
+                        <input
+                            type="text"
+                            id="studentName"
+                            name="studentName"
+                            placeholder="Enter your full name"
+                            autocomplete="name"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="marks">Academic Marks (%)</label>
+                            <input
+                                type="number"
+                                id="marks"
+                                name="marks"
+                                placeholder="e.g. 75"
+                                min="0"
+                                max="100"
+                                step="0.01"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="income">Annual Family Income (₹)</label>
+                            <input
+                                type="number"
+                                id="income"
+                                name="income"
+                                placeholder="e.g. 180000"
+                                min="0"
+                                step="1"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="attendance">Attendance (%)</label>
+                            <input
+                                type="number"
+                                id="attendance"
+                                name="attendance"
+                                placeholder="e.g. 85"
+                                min="0"
+                                max="100"
+                                step="0.01"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="otherScholarship">
+                                Receiving another scholarship?
+                            </label>
+
+                            <select
+                                id="otherScholarship"
+                                name="otherScholarship"
+                                required
+                            >
+                                <option value="">Select an option</option>
+                                <option value="no">No</option>
+                                <option value="yes">Yes</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-notice">
+                        <span>ℹ️</span>
+                        <p>
+                            This is a demonstration eligibility check.
+                            The official deadline and student records
+                            are not verified by this page.
+                        </p>
+                    </div>
+
+                    <div id="result" class="result-message"
+                         role="status" aria-live="polite"></div>
+
+                    <div class="form-buttons">
+                        <button type="submit" class="btn btn-primary">
+                            Check My Eligibility
+                        </button>
+
+                        <button type="reset" class="btn btn-reset">
+                            Clear Form
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Criteria -->
+            <aside class="criteria-card">
+                <div class="criteria-heading">
+                    <span class="criteria-icon">🎯</span>
+                    <div>
+                        <h3>Eligibility Criteria</h3>
+                        <p>Current example project rules</p>
+                    </div>
+                </div>
+
+                <div class="criteria-item">
+                    <div class="criteria-icon-box">📚</div>
+                    <div class="criteria-text">
+                        <h4>Minimum Marks</h4>
+                        <p>Academic performance requirement</p>
+                    </div>
+                    <strong>60%+</strong>
+                </div>
+
+                <div class="criteria-item">
+                    <div class="criteria-icon-box">💰</div>
+                    <div class="criteria-text">
+                        <h4>Family Income</h4>
+                        <p>Maximum annual income</p>
+                    </div>
+                    <strong>₹2.5L</strong>
+                </div>
+
+                <div class="criteria-item">
+                    <div class="criteria-icon-box">📅</div>
+                    <div class="criteria-text">
+                        <h4>Attendance</h4>
+                        <p>Minimum attendance required</p>
+                    </div>
+                    <strong>75%+</strong>
+                </div>
+
+                <div class="criteria-item">
+                    <div class="criteria-icon-box">🎓</div>
+                    <div class="criteria-text">
+                        <h4>Other Scholarship</h4>
+                        <p>No other active scholarship</p>
+                    </div>
+                    <strong class="not-allowed">Not allowed</strong>
+                </div>
+
+                <div class="criteria-warning">
+                    <strong>Important</strong>
+                    <p>
+                        Passing this demonstration check does not guarantee
+                        scholarship approval. The server must verify all
+                        official rules and the application deadline.
+                    </p>
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    <!-- Registration Call to Action -->
+    <section class="register-section">
+        <div class="register-content">
+            <div class="register-icon">🎓</div>
+
+            <div>
+                <h2>New to ScholarEase?</h2>
+                <p>
+                    Create your student account to prepare for scholarship
+                    applications and track your application status.
+                </p>
+            </div>
+
+            <a href="register.html" class="btn btn-white">
+                Register Now →
+            </a>
+        </div>
+
+        <p class="registered-text">
+            Already registered?
+            <a href="login.html">Login here</a>
+        </p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <a href="index.html" class="footer-logo">🎓 ScholarEase</a>
+
+            <p>
+                © 2026 ScholarEase | Scholarship Eligibility Check Register
+            </p>
+
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="register.html">Register</a>
+                <a href="login.html">Login</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

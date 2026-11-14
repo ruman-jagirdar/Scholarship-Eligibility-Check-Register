@@ -1,0 +1,280 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f1ff;
+    color: #24135e;
+    line-height: 1.6;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 18px 7%;
+    background: white;
+    box-shadow: 0 3px 12px #35108012;
+}
+
+.logo {
+    color: #5428b8;
+    font-size: 25px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+}
+
+nav a {
+    color: #51456f;
+    text-decoration: none;
+    padding: 7px 10px;
+}
+
+nav a:hover,
+nav a.active {
+    color: #6336ce;
+    border-bottom: 2px solid #6336ce;
+}
+
+.hero {
+    padding: 30px 7%;
+    background: linear-gradient(120deg, #e4d8ff, #faf7ff);
+}
+
+.hero h1 {
+    font-size: 32px;
+    margin-bottom: 5px;
+}
+
+.hero p {
+    color: #62547e;
+}
+
+.container {
+    width: 86%;
+    max-width: 1350px;
+    margin: 28px auto;
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(250px, 1fr);
+    gap: 22px;
+    align-items: start;
+}
+
+.registration-card,
+.info-card {
+    background: white;
+    border: 1px solid #e8e0f8;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 5px 20px #32107808;
+}
+
+.card-heading {
+    margin-bottom: 22px;
+}
+
+.card-heading h2 {
+    font-size: 25px;
+}
+
+.card-heading p,
+.info-card p {
+    color: #6b6084;
+}
+
+form h3 {
+    font-size: 17px;
+    background: #f0eaff;
+    padding: 9px 12px;
+    border-radius: 7px;
+    margin: 22px 0 15px;
+    color: #4920ad;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px 22px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+input,
+select {
+    width: 100%;
+    min-width: 0;
+    padding: 11px 12px;
+    border: 1px solid #d6cde8;
+    border-radius: 7px;
+    background: white;
+    color: #30234f;
+    font-size: 14px;
+}
+
+input:focus,
+select:focus {
+    outline: 2px solid #bca3ff;
+    border-color: #7447d7;
+}
+
+.agreement {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    margin: 22px 0;
+    font-size: 13px;
+    color: #55476e;
+}
+
+.agreement input {
+    width: auto;
+    margin-top: 5px;
+}
+
+.button-group {
+    display: flex;
+    gap: 12px;
+}
+
+button {
+    padding: 12px 20px;
+    border-radius: 7px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.register-btn {
+    flex: 1;
+    background: #6336ce;
+    color: white;
+    border: 1px solid #6336ce;
+}
+
+.register-btn:hover {
+    background: #4d25ae;
+}
+
+.reset-btn {
+    background: white;
+    color: #6336ce;
+    border: 1px solid #6336ce;
+}
+
+.login-prompt {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.login-prompt a {
+    color: #6336ce;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.info-card h3 {
+    margin-bottom: 14px;
+    font-size: 18px;
+}
+
+.info-card ul {
+    padding-left: 20px;
+    color: #62547e;
+}
+
+.info-card li {
+    margin-bottom: 9px;
+}
+
+.criteria-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee8f8;
+    font-size: 13px;
+}
+
+.criteria-row strong {
+    color: #4f25bd;
+    white-space: nowrap;
+}
+
+.note {
+    font-size: 12px;
+    margin-top: 12px;
+}
+
+#message {
+    margin: 10px 0;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+footer {
+    background: #342064;
+    color: white;
+    padding: 17px 7%;
+    text-align: center;
+    font-size: 13px;
+}
+
+@media (max-width: 900px) {
+    .container {
+        width: 92%;
+        grid-template-columns: 1fr;
+    }
+
+    .navbar {
+        padding: 15px 5%;
+    }
+}
+
+@media (max-width: 560px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 27px;
+    }
+
+    .registration-card,
+    .info-card {
+        padding: 17px;
+    }
+
+    nav {
+        gap: 8px;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+}
