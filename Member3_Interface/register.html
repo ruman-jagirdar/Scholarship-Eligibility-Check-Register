@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration | ScholarEase</title>
+    <link rel="stylesheet" href="register.css">
+</head>
+
+<body>
+
+<header class="navbar">
+    <a href="index.html" class="logo">🎓 ScholarEase</a>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="index.html">Eligibility Check</a>
+        <a href="register.html" class="active">Register</a>
+        <a href="login.html">Login</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>Student Registration</h1>
+    <p>Create your account to apply for scholarships and check your eligibility.</p>
+</section>
+
+<main class="container">
+
+    <section class="registration-card">
+
+        <div class="card-heading">
+            <h2>Registration Form</h2>
+            <p>Please fill in your details to create a student account.</p>
+        </div>
+
+        <form id="registerForm">
+
+            <h3>1. Personal Information</h3>
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label for="fullName">Full Name *</label>
+                    <input type="text" id="fullName" name="fullName"
+                           placeholder="Enter your full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="dob">Date of Birth *</label>
+                    <input type="date" id="dob" name="dob" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="gender">Gender *</label>
+                    <select id="gender" name="gender" required>
+                        <option value="">Select gender</option>
+                        <option value="Female">Female</option>
+                        <option value="Male">Male</option>
+                        <option value="Other">Other</option>
+                        <option value="Prefer not to say">Prefer not to say</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email"
+                           placeholder="Enter your email address" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="phone"
+                           placeholder="Enter your 10-digit phone number"
+                           pattern="[0-9]{10}" maxlength="10" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Address *</label>
+                    <input type="text" id="address" name="address"
+                           placeholder="Enter your address" required>
+                </div>
+
+            </div>
+
+            <h3>2. Academic Information</h3>
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label for="college">College / Institution *</label>
+                    <input type="text" id="college" name="college"
+                           placeholder="Enter your college name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="course">Course / Programme *</label>
+                    <select id="course" name="course" required>
+                        <option value="">Select course</option>
+                        <option value="BCA">BCA</option>
+                        <option value="BBA">BBA</option>
+                        <option value="BCom">B.Com</option>
+                        <option value="BA">B.A.</option>
+                        <option value="BSc">B.Sc.</option>
+                        <option value="BE">B.E. / B.Tech</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="year">Year of Study *</label>
+                    <select id="year" name="year" required>
+                        <option value="">Select year</option>
+                        <option value="1">First Year</option>
+                        <option value="2">Second Year</option>
+                        <option value="3">Third Year</option>
+                        <option value="4">Fourth Year</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="rollNumber">Roll Number / Student ID *</label>
+                    <input type="text" id="rollNumber" name="rollNumber"
+                           placeholder="Enter your roll number" required>
+                </div>
+
+            </div>
+
+            <h3>3. Account Information</h3>
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label for="username">Username *</label>
+                    <input type="text" id="username" name="username"
+                           placeholder="Choose a username" minlength="4"
+                           maxlength="30" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password *</label>
+                    <input type="password" id="password" name="password"
+                           placeholder="Create a password" minlength="8" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password *</label>
+                    <input type="password" id="confirmPassword"
+                           name="confirmPassword"
+                           placeholder="Re-enter your password" required>
+                </div>
+
+            </div>
+
+            <label class="agreement">
+                <input type="checkbox" id="terms" required>
+                <span>I agree to the terms and conditions and confirm that
+                the information provided is correct.</span>
+            </label>
+
+            <div id="message" role="status" aria-live="polite"></div>
+
+            <div class="button-group">
+                <button type="submit" class="register-btn">Create Account</button>
+                <button type="reset" class="reset-btn">Reset Form</button>
+            </div>
+
+            <p class="login-prompt">
+                Already have an account? <a href="login.html">Login here</a>
+            </p>
+
+        </form>
+
+    </section>
+
+    <aside class="sidebar">
+
+        <section class="info-card">
+            <h3>📌 Important Information</h3>
+            <ul>
+                <li>Enter accurate personal and academic details.</li>
+                <li>All fields marked with * are required.</li>
+                <li>Keep your login credentials private.</li>
+                <li>Registration does not guarantee scholarship approval.</li>
+            </ul>
+        </section>
+
+        <section class="info-card">
+            <h3>🎓 Eligibility Criteria</h3>
+            <div class="criteria-row">
+                <span>Minimum marks</span>
+                <strong>60%</strong>
+            </div>
+            <div class="criteria-row">
+                <span>Maximum annual family income</span>
+                <strong>₹2,50,000</strong>
+            </div>
+            <div class="criteria-row">
+                <span>Minimum attendance</span>
+                <strong>75%</strong>
+            </div>
+            <p class="note">
+                These are the project's current example rules.
+                Final eligibility is checked by the server.
+            </p>
+        </section>
+
+        <section class="info-card">
+            <h3>Need Help?</h3>
+            <p>Contact your college scholarship office if you have questions.</p>
+        </section>
+
+    </aside>
+
+</main>
+
+<footer>
+    <p>© 2026 ScholarEase | Scholarship Eligibility Check Register</p>
+</footer>
+
+<script src="register.js"></script>
+</body>
+</html>

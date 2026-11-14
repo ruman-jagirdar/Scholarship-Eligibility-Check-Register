@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScholarEase | Clerk Dashboard</title>
+    <link rel="stylesheet" href="clerk.css">
+</head>
+<body>
+
+<header class="topbar">
+    <a href="index.html" class="logo">🎓 ScholarEase</a>
+    <div class="top-actions">
+        <span class="role-badge">Clerk Portal</span>
+        <a href="login.html" class="logout">Logout</a>
+    </div>
+</header>
+
+<div class="layout">
+
+    <aside class="sidebar">
+        <h3>CLERK MENU</h3>
+        <a href="#overview" class="active">📊 Dashboard</a>
+        <a href="#applications">📋 Applications</a>
+        <a href="#review">🔍 Review Records</a>
+        <a href="#help">❓ Help & Support</a>
+    </aside>
+
+    <main class="main-content">
+
+        <section class="welcome" id="overview">
+            <p class="eyebrow">CLERK WORKSPACE</p>
+            <h1>Application Review Dashboard</h1>
+            <p>Review scholarship applications and keep student records organized.</p>
+        </section>
+
+        <section class="stats">
+            <article class="stat-card">
+                <div class="stat-icon purple">📋</div>
+                <p>Total Applications</p>
+                <h2 id="totalCount">5</h2>
+            </article>
+
+            <article class="stat-card">
+                <div class="stat-icon orange">⏳</div>
+                <p>Pending Review</p>
+                <h2 id="pendingCount">3</h2>
+            </article>
+
+            <article class="stat-card">
+                <div class="stat-icon green">✅</div>
+                <p>Approved</p>
+                <h2 id="approvedCount">1</h2>
+            </article>
+
+            <article class="stat-card">
+                <div class="stat-icon pink">❌</div>
+                <p>Rejected</p>
+                <h2 id="rejectedCount">1</h2>
+            </article>
+        </section>
+
+        <section class="application-panel" id="applications">
+            <div class="panel-heading">
+                <div>
+                    <h2>Scholarship Application Register</h2>
+                    <p>Search and review the sample application records below.</p>
+                </div>
+                <button class="refresh-button" onclick="renderApplications()">
+                    ↻ Refresh
+                </button>
+            </div>
+
+            <div class="filters">
+                <input
+                    type="search"
+                    id="searchInput"
+                    placeholder="Search by student or scholarship..."
+                    aria-label="Search applications"
+                >
+
+                <select id="statusFilter" aria-label="Filter by status">
+                    <option value="All">All Statuses</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Approved">Approved</option>
+                    <option value="Rejected">Rejected</option>
+                </select>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Student Name</th>
+                            <th>Scholarship</th>
+                            <th>Eligibility</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="applicationTable"></tbody>
+                </table>
+            </div>
+
+            <p class="demo-note">
+                Demo data only. This page is not connected to student records or a database.
+            </p>
+        </section>
+
+        <section class="review-panel" id="review">
+            <h2>Application Review</h2>
+            <p id="reviewMessage">
+                Select an application and click Review to view its details.
+            </p>
+            <div id="reviewDetails" class="review-details"></div>
+        </section>
+
+        <section class="help-panel" id="help">
+            <h2>Need Help?</h2>
+            <p>
+                Verify the student details and eligibility information before
+                making a decision. Follow your institution's approval process.
+            </p>
+        </section>
+
+        <footer>
+            <p>© 2026 ScholarEase | Scholarship Eligibility Check Register</p>
+            <p>Clerk Interface · Demonstration Version</p>
+        </footer>
+
+    </main>
+</div>
+
+<script src="clerk.js"></script>
+</body>
+</html>
