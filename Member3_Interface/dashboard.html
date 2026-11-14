@@ -12,7 +12,7 @@
     <a href="index.html" class="logo">🎓 ScholarEase</a>
     <div class="student-info">
         <span id="studentWelcome">Welcome, Student!</span>
-        <a href="login.html" class="logout">Logout</a>
+        <a href="logout" class="logout">Logout</a>
     </div>
 </header>
 
@@ -92,19 +92,5 @@
     }
 </script>
 <script>
-    const username = sessionStorage.getItem("demoUsername");
-    const role = sessionStorage.getItem("demoRole");
-
-    if (username) {
-        document.getElementById("studentWelcome").textContent =
-            "Welcome, " + username + "!";
-
-        if (role) {
-            document.getElementById("studentWelcome").textContent +=
-                " (" + role + ")";
-        }
-    }
-</script>
-
-</body>
-</html>
+    // The logged-in user comes from the server session (SessionInfoServlet).
+    fetch("session-info")
