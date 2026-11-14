@@ -1,13 +1,16 @@
 // ========================================
 // ScholarEase Login Page JavaScript
+// The server (LoginServlet) checks the username, password and role.
+// This file only helps the user: show/hide password, empty-field check,
+// and showing the error message sent back by the server.
 // ========================================
 
-// Get the login form elements
 const loginForm = document.getElementById("loginForm");
 const usernameInput = document.getElementById("username");
 const passwordInput = document.getElementById("password");
 const roleInput = document.getElementById("role");
 const togglePassword = document.getElementById("togglePassword");
+const messageBox = document.getElementById("message");
 
 // ========================================
 // 1. SHOW / HIDE PASSWORD
@@ -15,7 +18,6 @@ const togglePassword = document.getElementById("togglePassword");
 
 if (togglePassword && passwordInput) {
     togglePassword.addEventListener("click", function () {
-
         if (passwordInput.type === "password") {
             passwordInput.type = "text";
             togglePassword.textContent = "Hide";
@@ -23,54 +25,46 @@ if (togglePassword && passwordInput) {
             passwordInput.type = "password";
             togglePassword.textContent = "Show";
         }
-
     });
 }
 
 // ========================================
-// 2. LOGIN FORM VALIDATION
+// 2. SHOW THE ERROR SENT BY THE SERVER
+// ========================================
+
+const errorMessages = {
+    missing: "Please fill in all login fields.",
+    invalid: "Incorrect username, password or role. Please try again.",
+    server: "The server had a problem. Please try again later.",
+    login: "Please log in to continue."
+};
+
+function showMessage(text) {
+    if (!messageBox) return;
+    messageBox.textContent = text;
+    messageBox.style.color = "#b52d58";
+}
+
+const errorCode = new URLSearchParams(window.location.search).get("error");
+if (errorCode && errorMessages[errorCode]) {
+    showMessage(errorMessages[errorCode]);
+}
+
+// ========================================
+// 3. CHECK THE FORM BEFORE SENDING IT TO THE SERVER
 // ========================================
 
 if (loginForm) {
     loginForm.addEventListener("submit", function (event) {
+        const username = usernameInput ? usernameInput.value.trim() : "";
+        const password = passwordInput ? passwordInput.value : "";
+        const role = roleInput ? roleInput.value : "";
 
-        // Prevent the form from submitting normally
-        event.preventDefault();
-
-        // Get the values entered by the user
-        const username = usernameInput
-            ? usernameInput.value.trim()
-            : "";
-
-        const password = passwordInput
-            ? passwordInput.value
-            : "";
-
-        const role = roleInput
-            ? roleInput.value
-            : "";
-
-        // Check whether all required fields are filled
         if (!username || !password || !role) {
-            alert("Please fill in all login fields.");
-            return;
+            event.preventDefault();          // stop only when something is empty
+            showMessage(errorMessages.missing);
         }
-
-        // ========================================
-        // 3. TEMPORARY DEMO LOGIN
-        // ========================================
-
-        // This stores demo information in the browser.
-        // It does NOT verify the username or password.
-
-        sessionStorage.setItem("demoUsername", username);
-        sessionStorage.setItem("demoRole", role);
-
-        // ========================================
-        // 4. REDIRECT TO STUDENT DASHBOARD
-        // ========================================
-
-        window.location.href = "dashboard.html";
-
+        // Otherwise the form is sent to the /login servlet.
+        // Nothing is saved in the browser: the server keeps the session.
     });
 }

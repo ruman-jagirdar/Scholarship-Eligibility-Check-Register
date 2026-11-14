@@ -29,6 +29,12 @@ public class LoginServlet extends HttpServlet {
         try {
             UserDao.AppUser user = userDao.authenticate(username, password);
 
+            // The "Login As" choice must match the role stored for this account.
+            String chosenRole = trim(request.getParameter("role"));
+            if (user != null && !user.role.equalsIgnoreCase(chosenRole)) {
+                user = null;                     // same message as a wrong password
+            }
+
             if (user == null) {
                 // TODO: write a failed-login entry to the audit table (Member 1's audit code)
                 response.sendRedirect(request.getContextPath() + "/login.html?error=invalid");
