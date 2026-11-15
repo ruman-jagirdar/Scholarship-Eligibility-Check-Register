@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScholarEase | Student Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+<header class="topbar">
+    <a href="index.html" class="logo">🎓 ScholarEase</a>
+    <div class="student-info">
+        <span id="studentWelcome">Welcome, Student!</span>
+        <a href="logout" class="logout">Logout</a>
+    </div>
+</header>
+
+<div class="layout">
+    <aside class="sidebar">
+        <h3>Student Menu</h3>
+        <a href="#dashboard" class="active">🏠 Dashboard</a>
+        <a href="index.html">📝 Check Eligibility</a>
+        <a href="#applications">📋 My Applications</a>
+        <a href="#profile">👤 My Profile</a>
+        <a href="#notifications">🔔 Notifications</a>
+    </aside>
+
+    <main class="main-content" id="dashboard">
+        <section class="welcome">
+            <p class="eyebrow">YOUR FUTURE STARTS HERE</p>
+            <h1>Welcome to ScholarEase! 🎓</h1>
+            <p>Check your scholarship eligibility and keep track of your applications.</p>
+            <a href="index.html" class="primary-button">Check Eligibility →</a>
+        </section>
+
+        <section class="cards">
+            <article class="card" id="profile">
+                <div class="icon">👤</div>
+                <h2>My Profile</h2>
+                <p>Review your student information.</p>
+                <button onclick="showMessage('Profile details will be connected to the backend.')">
+                    View Profile
+                </button>
+            </article>
+
+            <article class="card">
+                <div class="icon">✅</div>
+                <h2>Check Eligibility</h2>
+                <p>Find out whether you meet scholarship criteria.</p>
+                <a href="index.html" class="card-button">Check Now</a>
+            </article>
+
+            <article class="card" id="applications">
+                <div class="icon">📋</div>
+                <h2>My Applications</h2>
+                <p>Review your scholarship application status.</p>
+                <button onclick="showMessage('Application records will appear after backend integration.')">
+                    View Applications
+                </button>
+            </article>
+
+            <article class="card" id="notifications">
+                <div class="icon">🔔</div>
+                <h2>Notifications</h2>
+                <p>Stay informed about scholarship updates.</p>
+                <button onclick="showMessage('Notifications will be available in a future update.')">
+                    View Updates
+                </button>
+            </article>
+        </section>
+
+        <section class="application-panel">
+            <h2>Recent Application Status</h2>
+            <p class="empty-message">
+                You have no application records to display yet.
+                Check your eligibility to get started.
+            </p>
+            <a href="index.html" class="text-link">Check Scholarship Eligibility →</a>
+        </section>
+
+        <footer>
+            <p>© 2026 ScholarEase | Scholarship Eligibility Check Register</p>
+            <p>Empowering Students · Building Brighter Futures</p>
+        </footer>
+    </main>
+</div>
+
+<script>
+    function showMessage(message) {
+        alert(message);
+    }
+</script>
+<script>
+    // The logged-in user comes from the server session (SessionInfoServlet).
+    fetch("session-info")

@@ -4,7 +4,9 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class EligibilityCheck {
+
     public static void main(String[] args) {
+
         String url = "jdbc:mysql://localhost:3306/scholarship_register";
         String username = "root";
         String password = "";
@@ -44,36 +46,34 @@ public class EligibilityCheck {
                  ResultSet rs = st.executeQuery(studentQuery)) {
 
                 while (rs.next()) {
-                    List<String> reasons = new ArrayList<>();
 
                     double marks = rs.getDouble("marks_pct");
                     double income = rs.getDouble("family_income");
                     double attendance = rs.getDouble("attendance_pct");
 
-                    if (marks < rules.get("R1")) {
-                        reasons.add("R1");
-                    }
-
-                    if (income > rules.get("R2")) {
-                        reasons.add("R2");
-                    }
-
-                    if (attendance < rules.get("R3")) {
-                        reasons.add("R3");
-                    }
-
-                    if (rs.getObject("active_scholarship_id") != null) {
-                        reasons.add("R4");
-                    }
+                    boolean hasOtherActiveScholarship =
+                        rs.getObject("active_scholarship_id") != null;
 
                     LocalDate deadline =
                         rs.getDate("deadline").toLocalDate();
 
-                    if (LocalDate.now().isAfter(deadline)) {
-                        reasons.add("R5");
-                    }
+                    // Calling Engine 2 for eligibility evaluation
+                    EligibilityResult result =
+                        EligibilityEngine.checkEligibility(
+                            marks,
+                            income,
+                            attendance,
+                            hasOtherActiveScholarship,
+                            LocalDate.now(),
+                            deadline,
+                            rules.get("R1"),
+                            rules.get("R2"),
+                            rules.get("R3")
+                        );
 
-                    String status = reasons.isEmpty()
+                    List<String> reasons = result.getReasons();
+
+                    String status = result.isEligible()
                         ? "ELIGIBLE"
                         : "NOT_ELIGIBLE";
 
@@ -93,7 +93,9 @@ public class EligibilityCheck {
                             find.setString(1, rs.getString("usn"));
 
                             try (ResultSet old = find.executeQuery()) {
+
                                 if (old.next()) {
+
                                     resultId = old.getInt("result_id");
 
                                     String update =
@@ -104,11 +106,14 @@ public class EligibilityCheck {
 
                                     try (PreparedStatement upd =
                                              con.prepareStatement(update)) {
+
                                         upd.setString(1, status);
                                         upd.setInt(2, resultId);
                                         upd.executeUpdate();
                                     }
+
                                 } else {
+
                                     String insert =
                                         "INSERT INTO eligibility_result " +
                                         "(usn, scheme_id, status) " +
@@ -118,17 +123,20 @@ public class EligibilityCheck {
                                              con.prepareStatement(
                                                  insert,
                                                  Statement.RETURN_GENERATED_KEYS)) {
+
                                         ins.setString(1, rs.getString("usn"));
                                         ins.setString(2, status);
                                         ins.executeUpdate();
 
                                         try (ResultSet keys =
                                                  ins.getGeneratedKeys()) {
+
                                             if (!keys.next()) {
                                                 throw new SQLException(
                                                     "Could not get result ID."
                                                 );
                                             }
+
                                             resultId = keys.getInt(1);
                                         }
                                     }
@@ -141,6 +149,7 @@ public class EligibilityCheck {
 
                         try (PreparedStatement del =
                                  con.prepareStatement(deleteReasons)) {
+
                             del.setInt(1, resultId);
                             del.executeUpdate();
                         }
@@ -151,6 +160,7 @@ public class EligibilityCheck {
 
                         try (PreparedStatement insReason =
                                  con.prepareStatement(insertReason)) {
+
                             for (String reason : reasons) {
                                 insReason.setInt(1, resultId);
                                 insReason.setString(2, reason);
@@ -165,12 +175,15 @@ public class EligibilityCheck {
 
                         try (PreparedStatement audit =
                                  con.prepareStatement(auditQuery)) {
+
                             audit.setString(1, "ELIGIBILITY_CHECKED");
+
                             audit.setString(
                                 2,
                                 rs.getString("usn") +
                                 " eligibility checked. Status: " + status
                             );
+
                             audit.executeUpdate();
                         }
 
@@ -195,6 +208,7 @@ public class EligibilityCheck {
                     } catch (Exception e) {
                         con.rollback();
                         throw e;
+
                     } finally {
                         con.setAutoCommit(true);
                     }

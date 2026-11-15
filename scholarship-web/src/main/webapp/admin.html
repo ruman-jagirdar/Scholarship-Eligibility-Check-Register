@@ -1,0 +1,245 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScholarEase | Admin Dashboard</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<header class="topbar">
+    <a href="index.html" class="logo">🎓 ScholarEase</a>
+    <div class="top-actions">
+        <span class="role-badge">Administrator</span>
+        <a href="logout" class="logout">Logout</a>
+    </div>
+</header>
+
+<div class="layout">
+
+    <aside class="sidebar">
+        <h3>ADMIN MENU</h3>
+        <a href="#overview" class="active">📊 Overview</a>
+        <a href="#users">👥 User Management</a>
+        <a href="#schemes">🎓 Scholarship Schemes</a>
+        <a href="#rules">⚙️ Eligibility Rules</a>
+        <a href="#reports">📈 Reports</a>
+        <a href="#audit">📝 Audit Logs</a>
+    </aside>
+
+    <main class="main-content">
+
+        <section class="welcome" id="overview">
+            <p class="eyebrow">ADMINISTRATOR WORKSPACE</p>
+            <h1>Welcome to Admin Dashboard 👋</h1>
+            <p>Manage scholarship schemes, review system information, and monitor application activity.</p>
+        </section>
+
+        <section class="stats">
+            <article class="stat-card">
+                <div class="stat-icon purple">👥</div>
+                <p>Total Users</p>
+                <h2 id="userCount">0</h2>
+            </article>
+
+            <article class="stat-card">
+                <div class="stat-icon blue">🎓</div>
+                <p>Scholarship Schemes</p>
+                <h2 id="schemeCount">3</h2>
+            </article>
+
+            <article class="stat-card">
+                <div class="stat-icon orange">📋</div>
+                <p>Total Applications</p>
+                <h2 id="applicationCount">25</h2>
+            </article>
+
+            <article class="stat-card">
+                <div class="stat-icon green">✅</div>
+                <p>Approved Applications</p>
+                <h2 id="approvedCount">10</h2>
+            </article>
+        </section>
+
+        <section class="panel" id="users">
+            <div class="panel-heading">
+                <div>
+                    <h2>👥 User Management</h2>
+                    <p>View registered user accounts and their assigned roles.</p>
+                </div>
+            </div>
+
+            <div class="filters">
+                <input
+                    type="search"
+                    id="userSearch"
+                    placeholder="Search users..."
+                    aria-label="Search users"
+                >
+
+                <select id="roleFilter" aria-label="Filter by role">
+                    <option value="All">All Roles</option>
+                    <option value="Student">Student</option>
+                    <option value="Clerk">Clerk</option>
+                    <option value="Admin">Admin</option>
+                </select>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>User ID</th>
+                            <th>Username</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="userTable"></tbody>
+                </table>
+            </div>
+
+            <p class="note">User records are retrieved from the database.</p>
+        </section>
+
+        <section class="panel" id="schemes">
+            <div class="panel-heading">
+                <div>
+                    <h2>🎓 Scholarship Schemes</h2>
+                    <p>Manage sample scholarship scheme records.</p>
+                </div>
+            </div>
+
+            <form id="schemeForm" class="scheme-form">
+                <label for="schemeName">Scholarship Name</label>
+                <input
+                    type="text"
+                    id="schemeName"
+                    placeholder="Enter scholarship name"
+                    required
+                    maxlength="100"
+                >
+                
+                <label for="academicYear">Academic Year</label>
+<input
+    type="text"
+    id="academicYear"
+    placeholder="e.g. 2026-2027"
+    pattern="[0-9]{4}-[0-9]{4}"
+    maxlength="9"
+    required
+>
+                <label for="schemeDeadline">Application Deadline</label>
+                <input type="date" id="schemeDeadline" required>
+
+                <button type="submit" class="primary-button">
+                    + Add Scheme
+                </button>
+            </form>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Scheme ID</th>
+                            <th>Scholarship Name</th>
+                            <th>Deadline</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="schemeTable"></tbody>
+                </table>
+            </div>
+
+            <p class="note">Changes are temporary and will not be saved to MySQL.</p>
+        </section>
+
+        <section class="panel" id="rules">
+            <h2>⚙️ Eligibility Rules</h2>
+            <p class="section-description">
+                Current project rule values for the demonstration interface.
+            </p>
+
+            <div class="rules-grid">
+                <article class="rule-card">
+                    <span>📚</span>
+                    <p>Minimum Marks</p>
+                    <h3>60%</h3>
+                </article>
+
+                <article class="rule-card">
+                    <span>💰</span>
+                    <p>Maximum Annual Family Income</p>
+                    <h3>₹2,50,000</h3>
+                </article>
+
+                <article class="rule-card">
+                    <span>📅</span>
+                    <p>Minimum Attendance</p>
+                    <h3>75%</h3>
+                </article>
+
+                <article class="rule-card">
+                    <span>🎓</span>
+                    <p>Other Active Scholarship</p>
+                    <h3>Not Allowed</h3>
+                </article>
+            </div>
+
+            <div class="info-box">
+                <strong>Note:</strong> These values are displayed for reference.
+                Official rules should be maintained and validated by the backend.
+                The application deadline must also be checked against the official scheme deadline.
+            </div>
+        </section>
+
+        <section class="panel" id="reports">
+            <h2>📈 Application Reports</h2>
+            <p class="section-description">
+                Sample application statistics for the demonstration.
+            </p>
+
+            <div class="report-grid">
+                <div class="report-card">
+                    <p>Pending Applications</p>
+                    <h3>8</h3>
+                </div>
+                <div class="report-card">
+                    <p>Approved Applications</p>
+                    <h3>10</h3>
+                </div>
+                <div class="report-card">
+                    <p>Rejected Applications</p>
+                    <h3>7</h3>
+                </div>
+            </div>
+
+            <p class="note">These figures are fictional and are not calculated from a database.</p>
+        </section>
+
+        <section class="panel" id="audit">
+            <h2>📝 Audit Logs</h2>
+            <p class="section-description">
+                Audit logs help administrators track important system activities.
+            </p>
+
+            <div class="info-box">
+                No real audit records are available in this frontend demonstration.
+                The Java backend should record actions such as login attempts,
+                rule changes, and application status updates.
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2026 ScholarEase | Scholarship Eligibility Check Register</p>
+            <p>Administrator Interface · Demonstration Version</p>
+        </footer>
+
+    </main>
+</div>
+
+<script src="admin.js?v=3"></script>
+</body>
+</html>
