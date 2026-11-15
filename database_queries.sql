@@ -1,4 +1,4 @@
-
+﻿
 -- ============================================================
 -- SCHOLARSHIP ELIGIBILITY CHECK REGISTER
 -- MEMBER 1: DATABASE & DATA INTEGRITY
@@ -556,5 +556,18 @@ WHERE e.result_id IS NULL;
 
 
 -- ============================================================
+
+-- Date: 15-11-2026
+-- Purpose: Verify that a scholarship scheme is not deleted when
+-- academic records, eligibility results, registrations or rules
+-- reference it.
+
+SELECT
+    (SELECT COUNT(*) FROM academic_record WHERE active_scholarship_id = 1) AS academic_records,
+    (SELECT COUNT(*) FROM eligibility_result WHERE scheme_id = 1) AS eligibility_results,
+    (SELECT COUNT(*) FROM registration WHERE scheme_id = 1) AS registrations,
+    (SELECT COUNT(*) FROM rule_value WHERE scheme_id = 1) AS rules;
+
 -- END OF DATABASE QUERY FILE
 -- ============================================================
+
