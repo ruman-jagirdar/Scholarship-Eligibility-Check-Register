@@ -1,10 +1,10 @@
-# Member 1 – Final Contribution Documentation
+﻿# Member 1 â€“ Final Contribution Documentation
 
 ## Project Name
 **Scholarship Eligibility Check Register**
 
 ## Engine
-**Engine 1 – Data & Integrity (DBMS)**
+**Engine 1 â€“ Data & Integrity (DBMS)**
 
 ## 1. Introduction
 
@@ -113,19 +113,19 @@ The following tests were performed:
 Three sample students were used to test eligibility checking:
 
 - **TEST001:** ELIGIBLE
-- **TEST002:** NOT_ELIGIBLE – Marks below minimum.
-- **TEST003:** NOT_ELIGIBLE – Family income above limit and attendance below minimum.
+- **TEST002:** NOT_ELIGIBLE â€“ Marks below minimum.
+- **TEST003:** NOT_ELIGIBLE â€“ Family income above limit and attendance below minimum.
 
 ## 9. Files Developed
 
 The main files associated with my contribution include:
 
-- `DBConnectionTest.java` – Tests Java-MySQL connectivity.
-- `RuleTest.java` – Retrieves eligibility rule values.
-- `EligibilityCheck.java` – Performs eligibility checking and stores results.
-- `database_documentation.md` – Documents database tables and relationships.
-- `testing_documentation.md` – Records testing and validation.
-- `logs/member1_work_log.md` – Maintains the work and issue-resolution log.
+- `DBConnectionTest.java` â€“ Tests Java-MySQL connectivity.
+- `RuleTest.java` â€“ Retrieves eligibility rule values.
+- `EligibilityCheck.java` â€“ Performs eligibility checking and stores results.
+- `database_documentation.md` â€“ Documents database tables and relationships.
+- `testing_documentation.md` â€“ Records testing and validation.
+- `logs/member1_work_log.md` â€“ Maintains the work and issue-resolution log.
 
 ## 10. Challenges and Solutions
 
@@ -137,6 +137,14 @@ The main files associated with my contribution include:
 | Maintaining result consistency | Used transactions and rollback. |
 | Storing rejection reasons | Used separate `result_reason` records. |
 
-## 11. Conclusion
+
+## 11. Recent Integration Contribution
+
+- Supported integration of the database components with the ScholarEase web application.
+- Implemented scheme deletion checks to prevent deletion when related database records exist.
+- Tested successful deletion of an unreferenced scheme and prevention of deletion when references exist.
+- Updated database documentation and SQL query records.
+
+## 12. Conclusion
 
 I successfully implemented the database and data integrity components of the Scholarship Eligibility Check Register. The database stores the required information, maintains relationships between records and prevents invalid or duplicate data. Java and JDBC connect the application to MySQL, allowing eligibility results and their reasons to be stored systematically.
