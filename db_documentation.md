@@ -279,3 +279,17 @@ Foreign keys connect related tables and maintain referential integrity.
 **Composite Foreign Key:** In the registration table, scheme_id and academic_year together reference scheme(scheme_id, academic_year).
 
 **Importance:** These relationships prevent invalid references, such as creating an academic record for a student who does not exist in the student table.
+## 12. Scheme Deletion Integrity
+
+The application checks whether a scholarship scheme is referenced by other database records before allowing its deletion.
+
+The following tables are checked:
+- academic_record
+- eligibility_result
+- registration
+- rule_value
+
+If any related records exist, deletion is prevented to maintain referential integrity. A scheme with no references can be deleted successfully.
+
+**Importance:** This prevents accidental deletion of scholarship schemes that are still being used by other records.
+
