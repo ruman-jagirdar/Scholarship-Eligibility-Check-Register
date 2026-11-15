@@ -58,3 +58,17 @@
 - **Issue:** TEST003 initially produced an unexpected eligibility result.
 - **Solution:** Reviewed the eligibility-checking logic and verified the expected results through testing.
 - **Status:** Completed.
+### Entry 10: Web Application Integration
+- **Date:** 15 November 2026
+- **Task:** Integrated the ScholarEase web application with the existing project.
+- **Issue:** Required Java files were stored in an incorrect web application folder.
+- **Solution:** Moved the required AuthFilter and SessionInfoServlet source files into the Maven Java source directory and removed outdated duplicate source files.
+- **Status:** Completed. Maven build successful.
+
+### Entry 11: Scheme Management and Data Integrity Testing
+- **Date:** 15 November 2026
+- **Task:** Tested adding and removing scholarship schemes through the admin dashboard.
+- **Issue:** A scheme must not be deleted when other database records reference it.
+- **Solution:** Added reference checks before deletion and tested both successful deletion and deletion prevention for referenced schemes.
+- **Status:** Completed.
+
